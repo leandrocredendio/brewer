@@ -1,33 +1,34 @@
 package com.algaworks.brewer.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "tb_estilo")
-public class Estilo implements Serializable {
+@Table(name = "tb_cidade")
+public class Cidade implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-
-	@NotBlank(message = "O nome é obrigatório")
-	@Size(max = 20, message = "O tamanho do nome não pode ser maior que {max} caracteres")
+	
 	private String nome;
 	
-	@OneToMany(mappedBy = "estilo")
-	private List<Cerveja> cervejas;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "codigo_estado")
+	@JsonIgnore
+	private Estado estado;
 
 	public Long getCodigo() {
 		return codigo;
@@ -43,6 +44,14 @@ public class Estilo implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
 	@Override
@@ -61,7 +70,7 @@ public class Estilo implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Estilo other = (Estilo) obj;
+		Cidade other = (Cidade) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -69,4 +78,5 @@ public class Estilo implements Serializable {
 			return false;
 		return true;
 	}
+
 }

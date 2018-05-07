@@ -21,6 +21,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.util.StringUtils;
+
 import com.algaworks.brewer.validation.SKU;
 
 @Entity
@@ -39,7 +41,7 @@ public class Cerveja {
 	private String nome;
 
 	@NotBlank(message = "A descrição é obrigatória")
-	@Size(max = 50, message = "O tamanho da descrição deve estar entre 1 e 50")
+	@Size(max = 100, message = "O tamanho da descrição deve estar entre 1 e 100")
 	private String descricao;
 
 	@NotNull(message = "Valor é obrigatório")
@@ -186,6 +188,10 @@ public class Cerveja {
 
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
+	}
+	
+	public String getFotoOuMock() {
+		return !StringUtils.isEmpty(foto) ? foto : "cerveja-mock.png";
 	}
 
 	@Override
