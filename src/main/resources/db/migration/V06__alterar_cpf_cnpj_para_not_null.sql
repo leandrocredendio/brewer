@@ -1,0 +1,2 @@
+ALTER TABLE tb_cliente
+	MODIFY cpf_cnpj VARCHAR(30) NOT NULL;
