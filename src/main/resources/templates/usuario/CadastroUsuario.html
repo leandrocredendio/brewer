@@ -15,9 +15,19 @@
 
 	<div class="page-header">
 		<div class="container-fluid">
-			<h1>
-				Cadastro de usuário
-			</h1>
+			<div class="row">
+				<div class="col-xs-10">
+					<h1>Cadastro de usuário</h1>
+				</div>
+				
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{/usuarios}">
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	
@@ -26,7 +36,7 @@
 			<credendio:message/>
 			
 			<div class="row">
-				<div class="form-group  col-sm-12 cr-required" credendio:classforerror="nome">
+				<div class="form-group  col-sm-12  cr-required" credendio:classforerror="nome">
 					<label for="nome" class="control-label">Nome</label>
 					<input type="text" class="form-control" id="nome" autofocus="autofocus" th:field="*{nome}"/>
 				</div>
