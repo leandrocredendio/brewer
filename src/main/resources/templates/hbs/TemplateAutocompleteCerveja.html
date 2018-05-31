@@ -1,0 +1,15 @@
+<script id="template-autocomplete-cerveja" type="text/x-handlebars-template">
+	<div class="cr-tabela-item">
+		<div class="cr-tabela-item__coluna  cr-tabela-item__coluna--foto">
+			<img th:src="@{/fotos/thumbnail.{{foto}}}" class="img-responsive" />
+		</div>
+		<div class="cr-tabela-item__coluna  cr-tabela-item__coluna--detalhes">
+			<span class="cr-tabela-cerveja-nome">{{nome}}</span>
+			<span class="label  label-default">{{sku}}</span>
+			<span class="cr-tabela-cerveja-origem">{{origem}}</span>
+		</div>
+		<div class="cr-tabela-item__coluna  cr-tabela-item__coluna--valores">
+			<div class="cr-tabela-cerveja-valor-medio">R${{valorFormatado}}</div>
+		</div>
+	</div>
+</script>
