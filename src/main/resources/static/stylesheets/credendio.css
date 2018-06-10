@@ -12,6 +12,11 @@
 }
 
 
+.has-error .input-group-btn .btn.btn-default {
+	color: #a94442;
+	border-color: #a94442;
+	background-color: #f2dede;
+}
 
 /*
 ######################
